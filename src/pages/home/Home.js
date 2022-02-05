@@ -7,7 +7,7 @@ const Home = () => {
     root: {
       display: "flex",
       flex: 10,
-      backgroundColor: themes.palette.primary.main,
+      //backgroundColor: themes.palette.primary.bgColor,
       padding: "10px 20px",
     },
   }));

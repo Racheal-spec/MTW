@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { themes } from "../../Theme";
 import logo from "../../Assets/logo-cor.svg";
+import { SEARCH } from "../../Routes";
 
 function Sidebar() {
   const SidebarStyles = makeStyles((theme) => ({
@@ -38,7 +39,6 @@ function Sidebar() {
       color: themes.palette.primary.dark,
       transition: "all 0.3s ease-out",
       padding: "5px 35px",
-      //width: "90%",
       "&:hover": {
         border: `1px solid ${themes.palette.primary.main} `,
         padding: "5px 35px",
@@ -70,7 +70,7 @@ function Sidebar() {
         <Link to="/" className={classes.navmenu}>
           <li className={classes.linklist}>Application 3</li>
         </Link>
-        <Link to="/" className={classes.navmenu}>
+        <Link to={SEARCH} className={classes.navmenu}>
           <li className={classes.linklist}>Customer Search</li>
         </Link>
       </div>
