@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../../Theme";
 import { IconButton, InputBase, Table } from "@mui/material";
@@ -6,6 +6,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import DataTable from "../../components/DataTable";
+import { SearchArray, searchArray } from "../../SearchFunc";
+import { datarows } from "../../Data/Data";
 
 const Search = () => {
   const SearchStyles = makeStyles((theme) => ({
@@ -33,11 +35,29 @@ const Search = () => {
     },
   }));
   const classes = SearchStyles();
+
+  const [value, setValue] = useState("");
+  const [customers, setCustomers] = useState(datarows);
+
+  const handleSearch = (e) => {
+    if (value.length > 2) {
+      let search = SearchArray(customers, value);
+      setCustomers(search);
+    } else {
+      setCustomers(datarows);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [value]);
+
   return (
     <div className={classes.root}>
       <div>
         <h2 className={classes.heading}>Customer Search</h2>
       </div>
+
       <div>
         <TextField
           type="search"
@@ -48,18 +68,14 @@ const Search = () => {
             className: classes.searchStyles,
             endAdornment: (
               <InputAdornment>
-                <IconButton
-                  classes={classes.searchBox}
-                  //onClick={() => handleSearch()}
-                  edge="end"
-                  //disabled={!Boolean(value)}
-                >
+                <IconButton classes={classes.searchBox} edge="end">
                   <SearchIcon />
                 </IconButton>
               </InputAdornment>
             ),
           }}
-          //onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
           classes={{ root: classes.testRoot }}
           onKeyPress={(ev) => {
             if (ev.key === "Enter") {
@@ -71,7 +87,7 @@ const Search = () => {
         />
       </div>
       <div className={classes.space}>
-        <DataTable />
+        <DataTable customers={customers} />
       </div>
     </div>
   );

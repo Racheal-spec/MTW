@@ -32,9 +32,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const rows = datarows;
+//const rows = datarows;
 
-export default function DataTable() {
+export default function DataTable({ customers }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -49,7 +49,7 @@ export default function DataTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {customers.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
