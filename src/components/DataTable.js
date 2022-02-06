@@ -32,10 +32,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, country, state, city, website) {
-  return { name, country, state, city, website };
-}
-
 const rows = datarows;
 
 export default function DataTable() {

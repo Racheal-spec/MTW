@@ -6,7 +6,32 @@ export const datarows = [
     state: "Maharashta",
     city: "Mumbai",
     website: "Firstco.com",
-    product: "screwdriver",
+    product: [
+      {
+        item: "machine",
+        unit: "piece",
+        partno: "U-730-75",
+        qty: 9456,
+      },
+      {
+        item: "scissors",
+        unit: "piece",
+        partno: "BHC-05",
+        qty: 3789,
+      },
+      {
+        item: "tape",
+        unit: "kg",
+        partno: "PBOKE2-3",
+        qty: 2453,
+      },
+      {
+        item: "needle",
+        unit: "piece",
+        partno: "L-21-14",
+        qty: 3567,
+      },
+    ],
   },
   {
     id: 3056,
@@ -49,7 +74,32 @@ export const datarows = [
     state: "Rio de Janeiro",
     city: "Volta Redonda",
     website: "3rdco.com",
-    product: "screw",
+    product: [
+      {
+        item: "screw",
+        unit: "piece",
+        partno: "D-530-75",
+        qty: 7456,
+      },
+      {
+        item: "wire",
+        unit: "piece",
+        partno: "BHJK-05",
+        qty: 8789,
+      },
+      {
+        item: "iron",
+        unit: "kg",
+        partno: "MGSKE2-3",
+        qty: 6953,
+      },
+      {
+        item: "machet",
+        unit: "piece",
+        partno: "N-91-14",
+        qty: 1527,
+      },
+    ],
   },
 
   {
@@ -59,28 +109,31 @@ export const datarows = [
     state: "Minas Gerais",
     city: "Belo Horizonte",
     website: "4thco.com",
-    product: "drilling machine",
-    unit: "piece",
-  },
-];
-
-/*
- product: [
+    product: [
       {
-        item: "screwdriver",
+        item: "drilling machine",
         unit: "piece",
+        partno: "D-530-75",
+        qty: 7956,
       },
       {
-        item: "hammer",
+        item: "cutting iron",
         unit: "piece",
+        partno: "BHC-05",
+        qty: 6189,
       },
       {
         item: "screw",
         unit: "kg",
+        partno: "COLKE2-3",
+        qty: 4453,
       },
       {
-        item: "drilling machine",
+        item: "paper machine",
         unit: "piece",
+        partno: "PS21-14",
+        qty: 1967,
       },
     ],
-    */
+  },
+];

@@ -24,6 +24,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    padding: "6px 5px",
   },
 }));
 
@@ -57,7 +58,6 @@ const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
     },
     testRoot: {
       width: "100%",
-      borderRadius: 20,
     },
     searchBox: {
       padding: "7px 13px",
@@ -77,7 +77,6 @@ const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
   const classes = DetailsStyles();
 
   const lists = product;
-  console.log(lists);
 
   return (
     <div className={classes.root}>
@@ -154,7 +153,6 @@ const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
 
 const Details = () => {
   let { id } = useParams();
-  console.log(id);
 
   if (id) {
     let tabledata = datarows.find((row) => {
