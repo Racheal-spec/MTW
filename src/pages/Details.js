@@ -15,6 +15,9 @@ import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
+import { ProductSearchArray } from "../SearchFunc";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -24,7 +27,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-    padding: "6px 5px",
+    padding: "8px 5px",
   },
 }));
 
@@ -38,11 +41,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(item, unit, partno, qty) {
-  return { item, unit, partno, qty };
-}
-
-const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
+const SingleDetail = ({ name, id, product }) => {
   const DetailsStyles = makeStyles((theme) => ({
     root: {
       flex: 10,
@@ -78,6 +77,22 @@ const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
 
   const lists = product;
 
+  const [value, setValue] = useState("");
+  const [products, setProducts] = useState(lists);
+
+  const handleSearch = (e) => {
+    if (value.length > 2) {
+      let search = ProductSearchArray(lists, value);
+      setProducts(search);
+    } else {
+      setProducts(lists);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [value]);
+
   return (
     <div className={classes.root}>
       <div className={classes.titlediv}>
@@ -96,23 +111,17 @@ const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
           type="search"
           variant="outlined"
           placeholder="Find customers..."
-          disableRipple
           InputProps={{
             className: classes.searchStyles,
             endAdornment: (
-              <InputAdornment>
-                <IconButton
-                  classes={classes.searchBox}
-                  //onClick={() => handleSearch()}
-                  edge="end"
-                  //disabled={!Boolean(value)}
-                >
+              <InputAdornment position="end">
+                <IconButton className={classes.searchBox} edge="end">
                   <SearchIcon />
                 </IconButton>
               </InputAdornment>
             ),
           }}
-          //onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           classes={{ root: classes.testRoot }}
           onKeyPress={(ev) => {
             if (ev.key === "Enter") {
@@ -127,18 +136,16 @@ const SingleDetail = ({ name, id, product, unit, partno, qty }) => {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">Product</StyledTableCell>
+              <StyledTableCell align="center">Product</StyledTableCell>
               <StyledTableCell align="center">Unit Measure</StyledTableCell>
               <StyledTableCell align="center">Part Number</StyledTableCell>
               <StyledTableCell align="center">Quantity</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {lists.map((list) => (
+            {products.map((list) => (
               <StyledTableRow key={list.item}>
-                <StyledTableCell component="th" scope="row">
-                  <StyledTableCell align="left">{list.item}</StyledTableCell>
-                </StyledTableCell>
+                <StyledTableCell align="center">{list.item}</StyledTableCell>
                 <StyledTableCell align="center">{list.unit}</StyledTableCell>
                 <StyledTableCell align="center">{list.partno}</StyledTableCell>
                 <StyledTableCell align="center">{list.qty}</StyledTableCell>
@@ -158,8 +165,6 @@ const Details = () => {
     let tabledata = datarows.find((row) => {
       return row.id === parseInt(id);
     });
-    console.log(tabledata);
-
     if (tabledata) {
       return (
         <>

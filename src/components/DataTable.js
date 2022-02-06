@@ -40,25 +40,23 @@ export default function DataTable({ customers }) {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="right">Country</StyledTableCell>
-            <StyledTableCell align="right">State</StyledTableCell>
-            <StyledTableCell align="right">City</StyledTableCell>
-            <StyledTableCell align="right">Website</StyledTableCell>
+            <StyledTableCell align="center">Name</StyledTableCell>
+            <StyledTableCell align="center">Country</StyledTableCell>
+            <StyledTableCell align="center">State</StyledTableCell>
+            <StyledTableCell align="center">City</StyledTableCell>
+            <StyledTableCell align="center">Website</StyledTableCell>
             <StyledTableCell></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {customers.map((row) => (
             <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.country}</StyledTableCell>
-              <StyledTableCell align="right">{row.state}</StyledTableCell>
-              <StyledTableCell align="right">{row.city}</StyledTableCell>
-              <StyledTableCell align="right">{row.website}</StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="center">{row.name}</StyledTableCell>
+              <StyledTableCell align="center">{row.country}</StyledTableCell>
+              <StyledTableCell align="center">{row.state}</StyledTableCell>
+              <StyledTableCell align="center">{row.city}</StyledTableCell>
+              <StyledTableCell align="center">{row.website}</StyledTableCell>
+              <StyledTableCell align="center">
                 <Link to={`details/${row.id}`}>View details</Link>
               </StyledTableCell>
             </StyledTableRow>

@@ -10,3 +10,14 @@ export const SearchArray = (array, keyword) => {
     );
   });
 };
+
+export const ProductSearchArray = (array, keyword) => {
+  const searchItem = keyword.toLowerCase();
+  return array.filter((value) => {
+    return (
+      value.item.toLowerCase().match(new RegExp(searchItem, "g")) ||
+      value.unit.toLowerCase().match(new RegExp(searchItem, "g")) ||
+      value.partno.toLowerCase().match(new RegExp(searchItem, "g"))
+    );
+  });
+};

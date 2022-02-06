@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { themes } from "../../Theme";
-import { IconButton, InputBase, Table } from "@mui/material";
+import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import DataTable from "../../components/DataTable";
-import { SearchArray, searchArray } from "../../SearchFunc";
+import { SearchArray } from "../../SearchFunc";
 import { datarows } from "../../Data/Data";
 
 const Search = () => {
@@ -63,12 +63,11 @@ const Search = () => {
           type="search"
           variant="outlined"
           placeholder="Find customers..."
-          disableRipple
           InputProps={{
             className: classes.searchStyles,
             endAdornment: (
-              <InputAdornment>
-                <IconButton classes={classes.searchBox} edge="end">
+              <InputAdornment position="end">
+                <IconButton className={classes.searchBox} edge="end">
                   <SearchIcon />
                 </IconButton>
               </InputAdornment>
