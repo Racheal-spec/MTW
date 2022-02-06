@@ -14,6 +14,9 @@ const Search = () => {
     root: {
       flex: 10,
       padding: "110px 20px 0px 20px",
+      [theme.breakpoints.down("sm")]: {
+        padding: "20px 20px 0px 20px",
+      },
     },
     heading: {
       fontWeight: 500,
@@ -22,6 +25,9 @@ const Search = () => {
       width: "60%",
       height: "40px",
       border: `1px solid ${themes.palette.primary.main}`,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      },
     },
     testRoot: {
       width: "100%",

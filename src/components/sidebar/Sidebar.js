@@ -17,7 +17,6 @@ function Sidebar() {
       [theme.breakpoints.down("sm")]: {
         display: "flex",
         height: "100%",
-        position: "relative",
       },
     },
     navul: {
@@ -28,6 +27,7 @@ function Sidebar() {
       listStyle: "none",
       [theme.breakpoints.down("sm")]: {
         display: "flex",
+        flexDirection: "row",
         overflowX: "scroll",
       },
     },
@@ -43,6 +43,10 @@ function Sidebar() {
         border: `1px solid ${themes.palette.primary.main} `,
         padding: "5px 35px",
         borderRadius: 12,
+      },
+      [theme.breakpoints.down("sm")]: {
+        padding: "5px 15px",
+        fontSize: 10,
       },
     },
     linklist: {

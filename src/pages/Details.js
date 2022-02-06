@@ -46,14 +46,23 @@ const SingleDetail = ({ name, id, product }) => {
     root: {
       flex: 10,
       padding: "110px 20px 0px 20px",
+      [theme.breakpoints.down("sm")]: {
+        padding: "50px 20px 0px 20px",
+      },
     },
     heading: {
       fontWeight: 500,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 16,
+      },
     },
     searchStyles: {
       width: "60%",
       height: "40px",
       border: `1px solid ${themes.palette.primary.main}`,
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      },
     },
     testRoot: {
       width: "100%",
@@ -71,6 +80,9 @@ const SingleDetail = ({ name, id, product }) => {
     headingdiv: {
       marginLeft: 100,
       fontWeight: 500,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 16,
+      },
     },
   }));
   const classes = DetailsStyles();
